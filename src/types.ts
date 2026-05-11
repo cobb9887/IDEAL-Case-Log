@@ -21,3 +21,17 @@ export interface CaseTypeVolume {
   volume: number;
   percent: number;
 }
+
+export interface CaseRecord {
+  id: string;
+  mrn: string;
+  accession: string;
+  patientStatus: 'Inpatient' | 'Outpatient';
+  modality: string;
+  location: string;
+  dateOfScan: string;
+  processingDate: string;
+  submittedDate: string;
+  tech: string;
+  status: 'Pending' | 'In Progress' | 'Completed' | 'Failed';
+}

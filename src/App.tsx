@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import Dashboard from './pages/Dashboard';
 import ActivityLogs from './pages/ActivityLogs';
+import CaseLogs from './pages/CaseLogs';
 import ReportViewer from './pages/ReportViewer';
 import AdminSettings from './pages/AdminSettings';
 import CaseEntry from './pages/CaseEntry';
@@ -15,10 +16,12 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<ActivityLogs />} />
+            <Route index element={<CaseLogs />} />
+            <Route path="cases" element={<CaseLogs />} />
+            <Route path="queue" element={<CaseLogs />} />
+            <Route path="activity" element={<ActivityLogs />} />
             <Route path="admin-metrics" element={<Dashboard />} />
             <Route path="analytics" element={<Dashboard />} />
-            <Route path="queue" element={<ActivityLogs />} />
             <Route path="settings" element={<AdminSettings />} />
             <Route path="case-entry" element={<CaseEntry />} />
             <Route path="new-case" element={<CaseEntry />} />

@@ -11,7 +11,8 @@ import {
   ClipboardList,
   PlusSquare,
   LogOut,
-  Plus
+  Plus,
+  Activity
 } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -22,15 +23,19 @@ export default function Layout() {
   const { role, setRole, isAdmin } = useUser();
 
   const primaryNav = [
-    { name: 'Case Log', path: '/' },
+    { name: 'Case Log', path: '/cases' },
     { name: 'Case Entry', path: '/case-entry' },
-    ...(isAdmin ? [{ name: 'Metrics', path: '/admin-metrics' }] : []),
+    ...(isAdmin ? [
+      { name: 'Metrics', path: '/admin-metrics' },
+      { name: 'Activity', path: '/activity' }
+    ] : []),
   ];
 
   const sidebarNav = [
     { name: 'Case Log', path: '/queue', icon: ClipboardList },
     { name: 'New Case', path: '/new-case', icon: PlusSquare },
     ...(isAdmin ? [
+      { name: 'All Activity', path: '/activity', icon: Activity },
       { name: 'Analytics', path: '/analytics', icon: BarChart3 },
       { name: 'Settings', path: '/settings', icon: Settings }
     ] : []),
@@ -109,16 +114,6 @@ export default function Layout() {
       <div className="flex pt-16 h-screen overflow-hidden">
         {/* Sidebar */}
         <aside className="hidden lg:flex flex-col fixed left-0 top-16 h-[calc(100vh-64px)] w-panel bg-surface-container-low border-r border-outline-variant py-grid">
-          <div className="px-container pb-grid border-b border-outline-variant mb-grid flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary text-on-primary rounded flex items-center justify-center font-bold font-headline-md">
-              W
-            </div>
-            <div>
-              <h2 className="font-headline-md text-primary leading-none">3D Lab Manager</h2>
-              <p className="font-body-sm text-secondary leading-none mt-1">Clinical Precision</p>
-            </div>
-          </div>
-
           <div className="px-container mb-grid">
             <button className="w-full bg-primary text-on-primary h-10 rounded font-title-sm font-semibold hover:bg-primary-container transition-colors flex items-center justify-center gap-2 active:opacity-80">
               <Plus size={18} /> Create New Case
